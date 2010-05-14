@@ -1,0 +1,13 @@
+ElementStore is a stand alone implementation of jQuery.data().
+
+jQuery.data() allows you to attach data of any type to DOM elements in a way that is safe from circular references and therefore from memory leaks.
+
+Usage:
+ElementStore.set(elm, "meaning of life", {42: 42})
+ElementStore.get(elm, "meaning of life")
+ElementStore.remove(elm, "meaning of life") //delete just one key
+ElementStore.remove(elm) //delete all element keys
+
+More info:
+http://api.jquery.com/jQuery.data
+http://amix.dk/blog/post/19504#ElementStore-Standalone-jQuery-data

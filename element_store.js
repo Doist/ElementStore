@@ -26,7 +26,7 @@ ElementStore = {
     },
 
     remove: function(elm, key) {
-        if(key) {
+        if(key != undefined) {
             var store = ElementStore.getStore(elm);
             if(store[key])
                 delete store[key];

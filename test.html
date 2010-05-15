@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>ElementStore test</title>
+    <script src="element_store.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="some_elm"></div>
+    <script type="text/javascript" charset="utf-8">
+        var some_elm = document.getElementById('some_elm');
+
+        ElementStore.set(some_elm, 'hello', 'world');
+        fireunit.compare('world', ElementStore.get(some_elm, 'hello'), 
+                         'Set/test test');
+
+        ElementStore.set(some_elm, 'hello', 'world_new');
+        fireunit.compare('world_new', ElementStore.get(some_elm, 'hello'),
+                         'Update an existing key');
+
+        ElementStore.remove(some_elm, 'hello');
+        fireunit.compare(null, ElementStore.get(some_elm, 'hello'),
+                         'Remove a key');
+
+        function keySize(elm) {
+            var store = ElementStore.getStore(elm);
+            var count = 0;
+            for(var k in store)
+                count++;
+            return count;
+        }
+
+        ElementStore.set(some_elm, 'hello1', 'world_new1');
+        ElementStore.set(some_elm, 'hello2', 'world_new2');
+        fireunit.compare(2, keySize(some_elm),
+                         'store multiple keys');
+        
+        ElementStore.remove(some_elm);
+        fireunit.compare(0, keySize(some_elm),
+                         'Remove all keys');
+
+        fireunit.testDone();
+    </script>
+</body>
+</html>

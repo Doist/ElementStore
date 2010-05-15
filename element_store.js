@@ -19,7 +19,7 @@ ElementStore = {
         return store[key];
     },
 
-    attach: function(elm, key, value) {
+    set: function(elm, key, value) {
         var store = ElementStore.getStore(elm);
         store[key] = value;
         return value;

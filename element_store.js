@@ -5,7 +5,7 @@
  *    http://amix.dk/blog/post/19504#ElementStore-Standalone-jQuery-data
  *
  * Made by amix the lucky stiff - amix.dk
- * Copyright Plurk 2010, released under BSD license
+ * Copyright amix 2010, released under BSD license
  */
 
 ElementStore = {

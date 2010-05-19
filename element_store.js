@@ -15,14 +15,16 @@ ElementStore = {
     expando: 'ElementStore' + (new Date).getTime(),
 
     get: function(elm, key) {
-        var store = ElementStore.getStore(elm);
-        return store[key];
+        return ElementStore.getStore(elm)[key] || null;
     },
 
     set: function(elm, key, value) {
-        var store = ElementStore.getStore(elm);
-        store[key] = value;
+        ElementStore.getStore(elm)[key] = value;
         return value;
+    },
+
+    has: function(elm, key) {
+        return ElementStore.getStore(elm)[key] != undefined;
     },
 
     remove: function(elm, key) {
@@ -35,7 +37,7 @@ ElementStore = {
             var elm_id = elm[ElementStore.expando];
             if(elm_id) {
                 delete ElementStore.storage_dict[elm_id];
-                delete elm[ElementStore.expando];
+                elm[ElementStore.expando] = null;
             }
         }
     },

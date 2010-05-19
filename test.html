@@ -34,12 +34,22 @@
 
         ElementStore.set(some_elm, 'hello1', 'world_new1');
         ElementStore.set(some_elm, 'hello2', 'world_new2');
+
         fireunit.compare(2, keySize(some_elm),
                          'store multiple keys');
         
         ElementStore.remove(some_elm);
         fireunit.compare(0, keySize(some_elm),
                          'Remove all keys');
+
+        //has test
+        fireunit.compare(false, ElementStore.has(some_elm, 'hello3'),
+                         'has not hello3 key');
+
+        ElementStore.set(some_elm, 'hello3', 0);
+
+        fireunit.compare(true, ElementStore.has(some_elm, 'hello3'),
+                         'has hello3 key');
 
         fireunit.testDone();
     </script>
